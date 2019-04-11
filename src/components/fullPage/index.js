@@ -9,9 +9,7 @@
  * Description: Markdown
  */
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./styles.less";
-const colors = ["yellow", "blue", "green", "red", "orange", "pink"];
 export default class FullPage extends Component {
     constructor(props) {
         super(props);
@@ -41,11 +39,11 @@ export default class FullPage extends Component {
     }
 
     resize = event => {
-		const clientHeight = document.documentElement.clientHeight;
-		this.setState({
-			clientHeight
-		});
-	};
+        const clientHeight = document.documentElement.clientHeight;
+        this.setState({
+            clientHeight
+        });
+    };
 
     handleWheel = event => {
         const { children } = this.props;
@@ -56,18 +54,30 @@ export default class FullPage extends Component {
             const { current } = this.state;
             this.wheelControl = 1;
             if (data > 0 && current < len - 1) {
+                let page = current + 1;
                 this.setState({
-                    current: current + 1
+                    current: page
                 });
+                this.pageChange(page);
             }
             if (data < 0 && current > 0) {
+                let page = current - 1;
                 this.setState({
-                    current: current - 1
+                    current: page
                 });
+                this.pageChange(page);
             }
+
             setTimeout(() => {
                 this.wheelControl = 0;
             }, 600);
+        }
+    };
+
+    pageChange = current => {
+        const { onChange } = this.props;
+        if (onChange) {
+            onChange(current);
         }
     };
 
@@ -86,11 +96,7 @@ export default class FullPage extends Component {
                     {children &&
                         children.map((item, index) => {
                             return (
-                                <div
-                                    key={index}
-                                    className="bie-page"
-                                    style={{ backgroundColor: colors[index] }}
-                                >
+                                <div key={index} className="bie-page">
                                     {item}
                                 </div>
                             );

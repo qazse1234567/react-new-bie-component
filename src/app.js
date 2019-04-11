@@ -10,22 +10,12 @@
  */
 import React from "react";
 import ReactDOM from "react-dom";
-
-import { Test, FullPage } from "./index";
-
-const handleSelect = selection => alert(`You selected ${selection}`);
+import FullPageExample from "../examples/fullPage";
 
 const App = () => {
     return (
         <div>
-            <FullPage>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-            </FullPage>
+            <FullPageExample />
         </div>
     );
 };
