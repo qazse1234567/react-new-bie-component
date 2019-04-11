@@ -6,7 +6,7 @@
  * Last Modified: Thursday April 11th 2019 1:50:58 pm
  * Modified By: the developer formerly known as zhengjiang at <you@you.you>
  * -----
- * Description: Markdown
+ * Description: FullPage
  */
 import React, { Component } from "react";
 import "./styles.less";
